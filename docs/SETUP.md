@@ -163,3 +163,26 @@ A wheel ships the `harness2` package only. The task partitioner,
 `python scripts/split_tasks.py`, requires this source tree. For a wheel
 installation, work from a dedicated directory: `.env`, `dependencies/`, and
 `runs/` are resolved there.
+
+## Browsing run outputs
+
+`scripts/runs_ui.py` serves a read-only local web page for browsing `runs/`:
+harnesses, trajectories, answers, and JSON summaries. It uses only the Python
+standard library and runs on any OS:
+
+```bash
+python scripts/runs_ui.py --root runs --port 8765
+# open http://127.0.0.1:8765/
+```
+
+By default it binds to `127.0.0.1` and rejects requests whose `Host` header is
+not local. Passing `--host 0.0.0.0` exposes `runs/` to your network, so use it
+only on trusted networks.
+
+## Windows (WSL)
+
+Harness² requires a POSIX host. On Windows, install and run it inside WSL 2
+(Ubuntu) using the [Install](../README.md#install) steps. Keep the virtual
+environment and `--output` directories on the Linux filesystem (for example
+`~/harness2-runs`); writing runs to `/mnt/c`, especially OneDrive-synced folders,
+can stall file locking for a long time.
