@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local configuration and secrets
+.env
+
+# Run outputs
+runs/
+
+# Tooling
+.ruff_cache/
+.pytest_cache/
